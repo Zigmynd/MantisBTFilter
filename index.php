@@ -97,9 +97,9 @@
 	</select>
 
 	 c <input type="text" name="date_from" class="tcal" value="<?php echo $_GET["date_from"]; ?>" />
-	по <input type="text" name="date_to" class="tcal" value="<?php if(isset($_GET["date_to"]))echo $_GET["date_to"]; else echo "2001-22-22"; ?>" />
+	по <input type="text" name="date_to" class="tcal" value="<?php if(isset($_GET["date_to"]))echo $_GET["date_to"]; else echo date("Y-m-d");?>" />
 <?php	
-	
+	 
 	
 	
 	echo "<input type=\"submit\" value=\"Фильтровать\">";	
