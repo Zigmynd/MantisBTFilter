@@ -97,7 +97,7 @@
 	</select>
 
 	 c <input type="text" name="date_from" class="tcal" value="<?php echo $_GET["date_from"]; ?>" />
-	по <input type="text" name="date_to" class="tcal" value="<?php echo $_GET["date_to"]; ?>" />
+	по <input type="text" name="date_to" class="tcal" value="<?php if(isset($_GET["date_to"]))echo $_GET["date_to"]; else echo "2001-22-22"; ?>" />
 <?php	
 	
 	
@@ -140,7 +140,7 @@
 		
 		while($t1 = mysql_fetch_row($sql_filter))
 		{
-			$sql_info = mysql_query("Select summary, b.name name From mantis_bug_table as a Join mantis_category_table as b on a.project_id=b.id WHERE a.id=".$t1[0]);
+			$sql_info = mysql_query("Select summary, name From mantis_bug_table as a Join mantis_category_table as b on a.category_id=b.id WHERE a.id=".$t1[0]);
 			while ($t2 = mysql_fetch_row($sql_info))
 			{
 				echo "<tr id='status_".$t1[3]."'><td><a target='_blank' href=\"/view.php?id=".$t1[0]."\">".$t1[0]."</a></td><td>".$t2[1]."</td><td>".$t2[0]."</td><td>".date("Y-m-d H:i",$t1[2])."</td></tr>";
