@@ -15,7 +15,7 @@ function sort(el) {
                 arrow = td.insertBefore(document.createElement("span"),td.firstChild);
                 el.up = 0;
             }
-            arrow.innerHTML = el.up?"^ ":"v ";
+            arrow.innerHTML = el.up?"<img width='16' height='16' src='./img/uparrow.png'>&nbsp;":"<img width='16' height='16' src='./img/downarrow.png'>&nbsp;";
         }else{
             if (td.prevsort == "y"){
                 td.prevsort = "n";

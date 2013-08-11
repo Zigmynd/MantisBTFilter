@@ -2,93 +2,12 @@
 <head>
 	<meta charset="windows-1251"/>
 	<title>Статистика .01</title>
-	<link rel="stylesheet" type="text/css" href="tcal.css" />
-	<script type="text/javascript" src="tcal.js"></script> 
-	<script type="text/javascript" src="tsort.js"></script> 
-	<style>
-	body
-	{
-		
-		color: #000000;
-		font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
-		margin: 5; padding: 5;
-	}
-	a:link, body_alink
-	{
-		color: #2E5B82;
-	}
-	a:visited, body_avisited
-	{
-		color: #284A67;
-	}
-	a:hover, a:active, body_ahover
-	{
-		color: #D11010;
-	} 
-	td, th, p, li
-	{
-		font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
-	}
-	.thead
-	{	
-		background: black;
-		color: white;
-		font: bold 11px tahoma, lucida, arial, helvetica, sans-serif;
-		border:solid 1px #ffffff;
-
-	}
-	.tborder
-	{
-		background: #E1E1E1;
-		color: #000000;
-		border: 1px solid #BBBBBB;
-	}	
-	select
-	{
-		font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
-	}
-	input
-	{
-		font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
-	}
-	option, optgroup
-	{
-		font-size: 11px;
-		font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
-	}
-	#status_10
-	{
-		background-color: #ef2929;
-	}
-	#status_15
-	{
-		background-color: #75507b;
-	}
-	#status_30
-	{
-		background-color: #f57900;
-	}
-	#status_40
-	{
-		background-color: #fce94f;
-	}
-	#status_50
-	{
-		background-color: #729fcf;
-	}
-	#status_80
-	{
-		background-color: #8ae234;
-	}
-	#status_85
-	{
-		background-color: #8f8c70;
-	}
-	#status_90
-	{
-		background-color: #babdb6;
-	}
-</style>
+	<link rel="stylesheet" type="text/css" href="./css/tcal.css" />
+	<link rel="stylesheet" type="text/css" href="./css/default.css" />
+	<link rel="stylesheet" type="text/css" href="./css/calendar-blue.css" />
+	<link rel="stylesheet" type="text/css" href="./css/status_color.css" />
+	<script type="text/javascript" src="./js/tcal.js"></script> 
+	<script type="text/javascript" src="./js/tsort.js"></script> 
 </head>
 
 <body>
@@ -213,7 +132,7 @@
 	{
 		echo "По вашему вопросу найдено: ". mysql_num_rows($sql_filter) ."<br>";
 		echo "<table width='100%' class='spc'>";
-		echo "<tr class=\"thead\"><td class='thd' onclick='sort(this)'>Bug</td><td class='thd' onclick='sort(this)'>Категория</td><td class='thd' onclick='sort(this)'>Суть</td><td class='thd' onclick='sort(this)'>Дата</td></tr>";
+		echo "<tr><td width='5%' class='thd' onclick='sort(this)'>Bug</td><td width='10%' class='thd' onclick='sort(this)'>Категория</td><td width='68%' class='thd' onclick='sort(this)'>Суть</td><td width='12%' class='thd' onclick='sort(this)'>Дата</td></tr>";
 
 		while($t1 = mysql_fetch_row($sql_filter))
 		{
