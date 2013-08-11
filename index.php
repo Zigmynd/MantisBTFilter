@@ -130,10 +130,11 @@
 	}
 	else
 	{
-		echo "По вашему вопросу найдено: ". mysql_num_rows($sql_filter) ."<br>";
-		echo "<table width='100%' class='spc'>";
-		echo "<tr><td width='5%' class='thd' onclick='sort(this)'>Bug</td><td width='10%' class='thd' onclick='sort(this)'>Категория</td><td width='68%' class='thd' onclick='sort(this)'>Суть</td><td width='12%' class='thd' onclick='sort(this)'>Дата</td></tr>";
-
+		echo "<p>По вашему вопросу найдено: <b>". mysql_num_rows($sql_filter) ."</b></p>";
+		echo "<table cellspacing='1' width='100%' class='width100'>";
+		echo "<tr class='row-category'><td width='5%' class='thd' onclick='sort(this)'>Bug</td><td width='10%' class='thd' onclick='sort(this)'>Категория</td><td width='68%' class='thd' onclick='sort(this)'>Суть</td><td width='12%' class='thd' onclick='sort(this)'>Дата</td></tr>";
+		
+		
 		while($t1 = mysql_fetch_row($sql_filter))
 		{
 			$sql_info = mysql_query("Select summary, b.name name From mantis_bug_table as a Join mantis_category_table as b on a.project_id=b.id WHERE a.id=".$t1[0]);
