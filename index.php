@@ -24,6 +24,9 @@
 					echo 'selected="selected"';
 			}
 		} 
+		else
+			if ($value == 'any')
+				echo 'selected="selected"';
 	}
 	
 	function save_o($value)
