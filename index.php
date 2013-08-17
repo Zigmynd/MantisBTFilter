@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="windows-1251"/>
-	<title>Статистика .22</title>
+	<title>Статистика .26</title>
 	<link rel="stylesheet" type="text/css" href="./css/tcal.css" />
 	<link rel="stylesheet" type="text/css" href="./css/default.css" />
 	<link rel="stylesheet" type="text/css" href="./css/calendar-blue.css" />
@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<p><a href="../">в Mantis</a></p>
 <?php
 	error_reporting(E_ERROR);
 	
