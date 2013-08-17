@@ -32,7 +32,10 @@
 				if ($value==$temp )
 					echo 'selected="selected"';
 			}
-		} 
+		}
+		else
+			if ($value == 'any')
+				echo 'selected="selected"'; 
 	}
 	
 	$db = mysql_connect("localhost","root","");
@@ -82,6 +85,7 @@
 	</select>
 
 	<select multiple size="10" name="new_value[]">	
+		<option value="any" <?php save_o('any'); ?>>Любое</option>
 		<option value="10" <?php save_o(10); ?>>Новый</option>
 		<option value="15" <?php save_o(15); ?>>Требует уточнения</option>
 		<option value="30" <?php save_o(30); ?>>Отложен</option>
@@ -102,6 +106,11 @@
 	foreach ( $_GET['old_value'] as $t)	{
 		if ($t == 'any')
 			$_GET['old_value'] = array (10,15,30,40,50,80,85,90);
+	}
+	
+	foreach ( $_GET['new_value'] as $t)	{
+		if ($t == 'any')
+			$_GET['new_value'] = array (10,15,30,40,50,80,85,90);
 	}
 
 	$sql_filter = mysql_query("SELECT bug_id, user_id, date_modified, b.status FROM `mantis_bug_history_table` as a join mantis_bug_table as b on a.bug_id = b.id WHERE b.project_id=".$_GET['project']." and old_value IN (".implode(',',$_GET["old_value"]).") and new_value IN (".implode(',',$_GET["new_value"]).") and user_id=".$_GET["user"]." and date_modified BETWEEN UNIX_TIMESTAMP('".$_GET["date_from"]."') and UNIX_TIMESTAMP(TIMESTAMPADD(DAY,1,'".$_GET["date_to"]."')) GROUP BY bug_id");
