@@ -11,9 +11,22 @@
 </head>
 
 <body>
-<p><a href="../">в Mantis</a></p>
+<p><a href="../view_all_bug_page.php">в Mantis</a></p>
 <?php
 	error_reporting(E_ERROR);
+	
+	function getStatusName ($status)	{
+		switch($status)		{
+			case 10: return "Новый"; break;
+			case 15: return "Требует уточнения"; break;
+			case 30: return "Отложен"; break;
+			case 40: return "На доработку"; break;
+			case 50: return "Назначен"; break;
+			case 80: return "Отработан"; break;
+			case 85: return "Включен в релиз"; break;
+			case 90: return "Закрыт"; break;
+		}
+	}
 	
 	function save($value)	{
 		if (isset($_GET['old_value']))	{
@@ -121,12 +134,12 @@
 	else	{
 		echo "<p>По вашему вопросу найдено: <b>". mysql_num_rows($sql_filter) ."</b></p>";
 		echo "<table cellspacing='1' width='100%' class='width100'>";
-		echo "<tr class='row-category'><td width='5%' class='thd' onclick='sort(this)'>Bug</td><td width='10%' class='thd' onclick='sort(this)'>Категория</td><td width='68%' class='thd' onclick='sort(this)'>Суть</td><td width='12%' class='thd' onclick='sort(this)'>Дата</td></tr>";
+		echo "<tr class='row-category'><td width='5%' class='thd' onclick='sort(this)'>Bug</td><td width='10%' class='thd' onclick='sort(this)'>Категория</td><td width='10%' class='thd' onclick='sort(this)'>Состояние</td><td width='58%' class='thd' onclick='sort(this)'>Суть</td><td width='12%' class='thd' onclick='sort(this)'>Дата</td></tr>";
 
 		while($t1 = mysql_fetch_row($sql_filter))	{
 			$sql_info = mysql_query("Select summary, name From mantis_bug_table as a Join mantis_category_table as b on a.category_id=b.id WHERE a.id=".$t1[0]);
 			while ($t2 = mysql_fetch_row($sql_info))	{
-				echo "<tr id='status_".$t1[3]."'><td><a target='_blank' href=\"/view.php?id=".$t1[0]."\">".$t1[0]."</a></td><td>".$t2[1]."</td><td>".$t2[0]."</td><td>".date("Y-m-d H:i",$t1[2])."</td></tr>";
+				echo "<tr id='status_".$t1[3]."'><td><a target='_blank' href=\"/view.php?id=".$t1[0]."\">".$t1[0]."</a></td><td>".$t2[1]."</td><td>".getStatusName($t1[3])."</td><td>".$t2[0]."</td><td>".date("Y-m-d H:i",$t1[2])."</td></tr>";
 			}
 		}	
 		echo "</table>";
